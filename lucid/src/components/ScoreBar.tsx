@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 interface ScoreBarProps {
   efficacy: number;
   buildQuality: number;
@@ -20,8 +18,6 @@ export const ScoreBar: React.FC<ScoreBarProps> = ({
   consensus,
   overallScore,
 }) => {
-  const avgScore = Math.round((efficacy + buildQuality + consensus) / 3);
-
   return (
     <div className="flex items-center gap-3">
       <div className="flex-1 flex gap-1 h-2">

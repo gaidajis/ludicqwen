@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLucidStore } from '../store/useLucidStore';
-import { IntroScreen } from './IntroScreen';
+import { useLucidStore } from './store/useLucidStore';
+import { IntroScreen } from './components/IntroScreen';
 import { Sidebar } from './components/Sidebar';
 import { TierSection } from './components/TierSection';
 import { DataCard } from './components/DataCard';
@@ -47,7 +47,7 @@ function App() {
   } = useLucidStore();
 
   // Filter items
-  const filteredItems = items.filter((item) => {
+  const filteredItems = items.filter((item: LucidItem) => {
     if (activeFilter.modality !== 'all' && item.modality !== activeFilter.modality) {
       return false;
     }
@@ -59,7 +59,7 @@ function App() {
 
   // Group items by tier
   const itemsByTier = tierIds.reduce((acc, tierId) => {
-    acc[tierId] = filteredItems.filter((item) => item.category === tierId);
+    acc[tierId] = filteredItems.filter((item: LucidItem) => item.category === tierId);
     return acc;
   }, {} as Record<TierCategory, LucidItem[]>);
 
@@ -178,7 +178,6 @@ function App() {
       >
         <ItemForm
           onSubmit={handleAddItem}
-          onCancel={() => setAddModalOpen(false)}
         />
       </Modal>
 
@@ -195,10 +194,6 @@ function App() {
           <ItemForm
             initialData={editingItem}
             onSubmit={handleEditItem}
-            onCancel={() => {
-              setEditModalOpen(false);
-              setEditingItem(null);
-            }}
           />
         )}
       </Modal>

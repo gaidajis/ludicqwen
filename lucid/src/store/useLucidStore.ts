@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { LucidStore, LucidItem, TierCategory } from '../types';
+import type { LucidStore } from '../types';
 import { initialData } from '../data/initialData';
 
 export const useLucidStore = create<LucidStore>((set) => ({

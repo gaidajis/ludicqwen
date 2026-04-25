@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { LucidItem, TierCategory, Modality, Budget } from '../types';
 
 interface ItemFormProps {
   initialData?: Partial<LucidItem>;
   onSubmit: (data: Omit<LucidItem, 'id'>) => void;
-  onCancel: () => void;
 }
 
 const tierOptions: { value: TierCategory; label: string }[] = [
@@ -32,7 +31,7 @@ const budgetOptions: { value: Budget; label: string }[] = [
   { value: 'luxury', label: 'Luxury' },
 ];
 
-export const ItemForm: React.FC<ItemFormProps> = ({ initialData, onSubmit, onCancel }) => {
+export const ItemForm: React.FC<ItemFormProps> = ({ initialData, onSubmit }) => {
   const [formData, setFormData] = useState({
     title: initialData?.title || '',
     category: initialData?.category || 'tier-1-alive' as TierCategory,

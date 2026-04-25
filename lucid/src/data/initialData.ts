@@ -1,4 +1,4 @@
-import type { LucidItem, TierCategory } from '../types';
+import type { LucidItem } from '../types';
 
 export const initialData: LucidItem[] = [
   // TIER 1 - Body Alive (Minutes)

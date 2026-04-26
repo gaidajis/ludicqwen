@@ -28,7 +28,7 @@ const tierIds: TierCategory[] = [
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
-  const [showLanding, setShowLanding] = useState(false);
+  const [showLanding, setShowLanding] = useState(true); // Show landing after intro by default
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);

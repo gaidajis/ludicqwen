@@ -13,7 +13,8 @@ export const initialData: LucidItem[] = [
     overallScore: 97,
     justification: "Windlass-style tourniquet proven to stop extremity hemorrhage in under 60 seconds. Standard issue for military and trauma medicine worldwide.",
     sourceTypes: ["Trauma Medicine", "Military Protocol"],
-    context: { budget: "mid", intent: "survival" }
+    context: { budget: "mid", intent: "survival" },
+    affiliateLink: "https://www.amazon.com/North-American-Rescue-7-002C-C-A-T-Tourniquet/dp/B019ZVTQXK"
   },
   {
     id: "t1-2",
@@ -26,7 +27,8 @@ export const initialData: LucidItem[] = [
     overallScore: 94,
     justification: "Opioid antagonist that reverses respiratory depression within 2-3 minutes. FDA-approved for emergency overdose intervention.",
     sourceTypes: ["Emergency Medicine", "Public Health"],
-    context: { budget: "budget", intent: "survival" }
+    context: { budget: "budget", intent: "survival" },
+    affiliateLink: "https://www.amazon.com/Narcan-Naloxone-Hydrochloride-Spray-Box/dp/B08FXYR3VH"
   },
   {
     id: "t1-3",
@@ -39,7 +41,8 @@ export const initialData: LucidItem[] = [
     overallScore: 96,
     justification: "Immediate intramuscular epinephrine delivery for anaphylactic shock. Single-dose auto-injection eliminates dosing errors under stress.",
     sourceTypes: ["Allergy Medicine", "Emergency Response"],
-    context: { budget: "luxury", intent: "survival" }
+    context: { budget: "luxury", intent: "survival" },
+    affiliateLink: "https://www.epipen.com/"
   },
   {
     id: "t1-4",
@@ -52,7 +55,8 @@ export const initialData: LucidItem[] = [
     overallScore: 92,
     justification: "Delivers 90%+ pure oxygen at altitude or in hypoxic environments. Battery-powered units provide 8+ hours of continuous flow.",
     sourceTypes: ["Respiratory Medicine", "Aviation Safety"],
-    context: { budget: "luxury", intent: "survival" }
+    context: { budget: "luxury", intent: "survival" },
+    affiliateLink: "https://www.inogen.com/portable-oxygen-concentrators/"
   },
   {
     id: "t1-5",
@@ -65,7 +69,8 @@ export const initialData: LucidItem[] = [
     overallScore: 88,
     justification: "Mylar construction reflects 90% of body heat. Weighs 50g and prevents hypothermia in extreme temperature exposure.",
     sourceTypes: ["Survival Science", "Outdoor Medicine"],
-    context: { budget: "budget", intent: "survival" }
+    context: { budget: "budget", intent: "survival" },
+    affiliateLink: "https://www.amazon.com/AMK-SOL-Emergency-Bivvy-Orange/dp/B00FKZRJ4I"
   },
   {
     id: "t1-6",
@@ -78,7 +83,8 @@ export const initialData: LucidItem[] = [
     overallScore: 89,
     justification: "Enables safe rescue breathing without direct contact. Integrated one-way valve prevents pathogen transmission during resuscitation.",
     sourceTypes: ["First Aid", "Emergency Response"],
-    context: { budget: "budget", intent: "survival" }
+    context: { budget: "budget", intent: "survival" },
+    affiliateLink: "https://www.amazon.com/Prestan-Professional-Monitoring-Training-Manikin/dp/B07MDHFV4W"
   },
   {
     id: "t1-7",
@@ -91,7 +97,8 @@ export const initialData: LucidItem[] = [
     overallScore: 93,
     justification: "Kaolin-impregnated gauze accelerates clotting by 40%. Effective on junctional wounds where tourniquets cannot be applied.",
     sourceTypes: ["Trauma Medicine", "Combat Casualty Care"],
-    context: { budget: "mid", intent: "survival" }
+    context: { budget: "mid", intent: "survival" },
+    affiliateLink: "https://www.naresearch.com/product-category/quikclot-hemostatic-agents/"
   },
   {
     id: "t1-8",
@@ -104,7 +111,8 @@ export const initialData: LucidItem[] = [
     overallScore: 96,
     justification: "Analyzes cardiac rhythm and delivers life-saving shocks for ventricular fibrillation. Voice prompts guide untrained responders through CPR cycles.",
     sourceTypes: ["Cardiology", "Emergency Medicine"],
-    context: { budget: "luxury", intent: "survival" }
+    context: { budget: "luxury", intent: "survival" },
+    affiliateLink: "https://www.philips.com/aed"
   },
   {
     id: "t1-9",
@@ -117,7 +125,8 @@ export const initialData: LucidItem[] = [
     overallScore: 92,
     justification: "Sodium dichloroisocyanurate tablets eliminate bacteria, viruses, and protozoa in 30 minutes. 500-tablet tin treats 1000 liters.",
     sourceTypes: ["Water Safety", "Expedition Medicine"],
-    context: { budget: "budget", intent: "survival" }
+    context: { budget: "budget", intent: "survival" },
+    affiliateLink: "https://www.amazon.com/Aquatabs-Purification-Tablets-Travel-Camping/dp/B00FGWGXPY"
   },
   {
     id: "t1-10",
@@ -126,11 +135,12 @@ export const initialData: LucidItem[] = [
     modality: "experience",
     imageUrl: "https://images.unsplash.com/photo-1522056615691-da7b8106c665?auto=format&fit=crop&w=800&q=80",
     rank: 10,
-    scores: { efficacy: 89, buildQuality: 92, consensus: 87 },
+    scores: { impact: 89, transformation: 92, uniqueness: 87 },
     overallScore: 89,
     justification: "Simulated hypoxia chambers teach recognition of oxygen deprivation symptoms. Critical preparation for high-altitude expeditions and aviation emergencies.",
     sourceTypes: ["Aviation Training", "Mountaineering"],
-    context: { budget: "luxury", intent: "preparation" }
+    context: { budget: "luxury", intent: "preparation" },
+    affiliateLink: "https://www.nols.edu/en/courses/wilderness-medicine/"
   },
 
   // TIER 2 - Body Stable (Hours)

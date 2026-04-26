@@ -14,17 +14,17 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const tiers: { id: TierCategory; label: string }[] = [
-  { id: 'tier-1-alive', label: '01 BODY ALIVE' },
-  { id: 'tier-2-stable', label: '02 BODY STABLE' },
-  { id: 'tier-3-sustained', label: '03 BODY SUSTAINED' },
-  { id: 'tier-4-secure', label: '04 ENVIRONMENT SECURE' },
-  { id: 'tier-5-pleasure', label: '05 BODY & PLEASURE' },
-  { id: 'tier-6-social', label: '06 SOCIAL & EMOTIONAL' },
-  { id: 'tier-7-agency', label: '07 STATUS & AGENCY' },
-  { id: 'tier-8-mind', label: '08 MIND STIMULATED' },
-  { id: 'tier-9-senses', label: '09 SENSES & EXCITEMENT' },
-  { id: 'tier-10-meaning', label: '10 SELF & MEANING' },
+const tierInfo: { id: TierCategory; label: string; description: string }[] = [
+  { id: 'tier-1-alive', label: '01 BODY ALIVE', description: 'The non-negotiables. What stands between the body and extinction.' },
+  { id: 'tier-2-stable', label: '02 BODY STABLE', description: 'Stabilization within hours. Water, shelter, wound management.' },
+  { id: 'tier-3-sustained', label: '03 BODY SUSTAINED', description: 'Sustenance over days. Nutrition, sleep, recovery systems.' },
+  { id: 'tier-4-secure', label: '04 ENVIRONMENT SECURE', description: 'Environmental fortification. Safety infrastructure, grid resilience.' },
+  { id: 'tier-5-pleasure', label: '05 BODY & PLEASURE', description: 'Sensory restoration. Touch, comfort, deliberate pleasure.' },
+  { id: 'tier-6-social', label: '06 SOCIAL & EMOTIONAL', description: 'Relational infrastructure. Belonging, emotional safety.' },
+  { id: 'tier-7-agency', label: '07 STATUS & AGENCY', description: 'Autonomy architecture. Mastery, sovereignty, decision power.' },
+  { id: 'tier-8-mind', label: '08 MIND STIMULATED', description: 'Cognitive expansion. Discovery frameworks, deep learning.' },
+  { id: 'tier-9-senses', label: '09 SENSES & EXCITEMENT', description: 'Awe procurement. Uncharted coordinates, peak sensory input.' },
+  { id: 'tier-10-meaning', label: '10 SELF & MEANING', description: 'The longest game. Purpose, legacy, highest-impact contribution.' },
 ];
 
 const modalityOptions = ['all', 'product', 'experience', 'location'];
@@ -83,20 +83,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Tier Navigation */}
       <nav className="flex-1 overflow-y-auto py-4">
         <ul className="space-y-1 px-4">
-          {tiers.map((tier) => (
+          {tierInfo.map((tier) => (
             <li key={tier.id}>
               <button
                 onClick={() => {
                   onTierClick(tier.id);
                   onClose();
                 }}
-                className={`w-full text-left px-3 py-2 text-sm font-mono transition-colors ${
+                className={`w-full text-left px-3 py-2.5 transition-colors ${
                   activeTier === tier.id
                     ? 'border-l-2 border-white dark:border-white font-bold pl-2 bg-gray-100 dark:bg-gray-800'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                 }`}
               >
-                {tier.label}
+                <div className="font-mono text-sm">{tier.label}</div>
+                <div className="text-xs text-gray-500 mt-0.5 leading-tight">{tier.description}</div>
               </button>
             </li>
           ))}

@@ -100,12 +100,7 @@ export const DataCard: React.FC<DataCardProps> = ({ item, editMode, onEdit, onDe
 
         {/* Score Bar */}
         <div className="mb-3">
-          <ScoreBar
-            efficacy={item.scores.efficacy}
-            buildQuality={item.scores.buildQuality}
-            consensus={item.scores.consensus}
-            overallScore={item.overallScore}
-          />
+          <ScoreBar item={item} />
         </div>
 
         {/* Justification */}

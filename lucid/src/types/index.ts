@@ -19,10 +19,17 @@ export interface LucidItem {
   modality: Modality;
   imageUrl: string;
   rank: number;
+  // Different metrics based on modality
   scores: {
-    efficacy: number;
-    buildQuality: number;
-    consensus: number;
+    efficacy?: number;        // For products
+    buildQuality?: number;    // For products
+    consensus?: number;       // For products
+    impact?: number;          // For experiences
+    transformation?: number;  // For experiences
+    uniqueness?: number;      // For experiences & locations
+    beauty?: number;          // For locations
+    accessibility?: number;   // For locations
+    safety?: number;          // For locations
   };
   overallScore: number;
   justification: string;
@@ -31,6 +38,7 @@ export interface LucidItem {
     budget: Budget;
     intent: string;
   };
+  affiliateLink?: string;     // Optional affiliate marketing link
 }
 
 export interface FilterState {

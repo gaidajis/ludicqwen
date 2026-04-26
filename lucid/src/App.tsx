@@ -7,6 +7,7 @@ import { Sidebar } from './components/Sidebar';
 import { TierSection } from './components/TierSection';
 import { DataCard } from './components/DataCard';
 import { Modal } from './components/Modal';
+import { DetailModal } from './components/DetailModal';
 import { ItemForm } from './components/ItemForm';
 import { ConfirmDelete } from './components/ConfirmDelete';
 import type { LucidItem, TierCategory } from './types';
@@ -32,6 +33,7 @@ function App() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<LucidItem | null>(null);
   const [deletingItem, setDeletingItem] = useState<LucidItem | null>(null);
+  const [viewingItem, setViewingItem] = useState<LucidItem | null>(null);
 
   const {
     items,
@@ -126,9 +128,7 @@ function App() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <main
-        className={`lg:pl-[280px] ${editMode ? 'pt-10' : ''}`}
-      >
+      <main className={`lg:pl-[280px] ${editMode ? 'pt-10' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 py-8 lg:px-8 lg:py-12">
           {tierIds.map((tierId) => (
             <div key={tierId} className="mb-16 last:mb-0">
@@ -146,6 +146,7 @@ function App() {
                       setDeletingItem(i);
                       setDeleteModalOpen(true);
                     }}
+                    onView={(i) => setViewingItem(i)}
                   />
                 ))}
               </TierSection>
@@ -170,31 +171,25 @@ function App() {
         )}
       </AnimatePresence>
 
+      {/* Detail Modal */}
+      <DetailModal
+        item={viewingItem}
+        onClose={() => setViewingItem(null)}
+      />
+
       {/* Add Modal */}
-      <Modal
-        isOpen={addModalOpen}
-        onClose={() => setAddModalOpen(false)}
-        title="Add New Item"
-      >
-        <ItemForm
-          onSubmit={handleAddItem}
-        />
+      <Modal isOpen={addModalOpen} onClose={() => setAddModalOpen(false)} title="Add New Item">
+        <ItemForm onSubmit={handleAddItem} />
       </Modal>
 
       {/* Edit Modal */}
       <Modal
         isOpen={editModalOpen}
-        onClose={() => {
-          setEditModalOpen(false);
-          setEditingItem(null);
-        }}
+        onClose={() => { setEditModalOpen(false); setEditingItem(null); }}
         title="Edit Item"
       >
         {editingItem && (
-          <ItemForm
-            initialData={editingItem}
-            onSubmit={handleEditItem}
-          />
+          <ItemForm initialData={editingItem} onSubmit={handleEditItem} />
         )}
       </Modal>
 
@@ -203,10 +198,7 @@ function App() {
         {deleteModalOpen && deletingItem && (
           <ConfirmDelete
             isOpen={deleteModalOpen}
-            onClose={() => {
-              setDeleteModalOpen(false);
-              setDeletingItem(null);
-            }}
+            onClose={() => { setDeleteModalOpen(false); setDeletingItem(null); }}
             onConfirm={handleDeleteConfirm}
             itemTitle={deletingItem.title}
           />

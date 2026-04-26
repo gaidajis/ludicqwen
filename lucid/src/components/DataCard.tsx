@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Pencil, Trash2, ImageOff } from 'lucide-react';
 import type { LucidItem } from '../types';
@@ -9,6 +9,7 @@ interface DataCardProps {
   editMode: boolean;
   onEdit: (item: LucidItem) => void;
   onDelete: (item: LucidItem) => void;
+  onView: (item: LucidItem) => void;
 }
 
 const tierLabels: Record<string, string> = {
@@ -24,28 +25,34 @@ const tierLabels: Record<string, string> = {
   'tier-10-meaning': 'TIER 10',
 };
 
-export const DataCard: React.FC<DataCardProps> = ({ item, editMode, onEdit, onDelete }) => {
+export const DataCard: React.FC<DataCardProps> = ({ item, editMode, onEdit, onDelete, onView }) => {
   const [imageError, setImageError] = useState(false);
+
+  // Reset image error when item changes (e.g. after filter)
+  useEffect(() => {
+    setImageError(false);
+  }, [item.id, item.imageUrl]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="group relative bg-card-light dark:bg-card border border-border-light dark:border-border rounded-lg overflow-hidden hover:shadow-[0_1px_0_#E0E0E0] dark:hover:shadow-[0_1px_0_#222222] transition-shadow"
+      className="group relative bg-card-light dark:bg-card border border-border-light dark:border-border rounded-lg overflow-hidden hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.4)] transition-shadow cursor-pointer"
+      onClick={() => !editMode && onView(item)}
     >
       {/* Edit/Delete Controls - Only visible in edit mode */}
       {editMode && (
         <div className="absolute top-2 right-2 z-10 flex gap-2">
           <button
-            onClick={() => onEdit(item)}
+            onClick={(e) => { e.stopPropagation(); onEdit(item); }}
             className="p-2 bg-white/90 dark:bg-gray-800/90 rounded-full hover:bg-white dark:hover:bg-gray-700 transition-colors shadow-sm"
             aria-label="Edit item"
           >
             <Pencil className="w-4 h-4" />
           </button>
           <button
-            onClick={() => onDelete(item)}
+            onClick={(e) => { e.stopPropagation(); onDelete(item); }}
             className="p-2 bg-white/90 dark:bg-gray-800/90 rounded-full hover:bg-red-500 hover:text-white transition-colors shadow-sm"
             aria-label="Delete item"
           >
@@ -56,13 +63,13 @@ export const DataCard: React.FC<DataCardProps> = ({ item, editMode, onEdit, onDe
 
       {/* Image Header - 16:9 aspect ratio */}
       <div className="aspect-video w-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
-        {!imageError ? (
+        {!imageError && item.imageUrl ? (
           <img
             src={item.imageUrl}
             alt={item.title}
             loading="lazy"
             onError={() => setImageError(true)}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-[#1A1A1A]">

@@ -1,4 +1,5 @@
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { Menu, X, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { TierCategory, FilterState } from '../types';
 
@@ -29,6 +30,9 @@ const tiers: { id: TierCategory; label: string }[] = [
 const modalityOptions = ['all', 'product', 'experience', 'location'];
 const budgetOptions = ['all', 'budget', 'mid', 'luxury'];
 
+// PIN is checked client-side — keeps casual visitors out without a server
+const ADMIN_PIN = 'lucid2025';
+
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTier,
   activeFilter,
@@ -39,6 +43,34 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
   onClose,
 }) => {
+  const [pinPromptOpen, setPinPromptOpen] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [pinError, setPinError] = useState(false);
+
+  const handleEditModeClick = () => {
+    if (editMode) {
+      // Exiting edit mode — no PIN needed
+      onToggleEditMode();
+    } else {
+      setPinPromptOpen(true);
+      setPinInput('');
+      setPinError(false);
+    }
+  };
+
+  const handlePinSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pinInput === ADMIN_PIN) {
+      setPinPromptOpen(false);
+      setPinInput('');
+      setPinError(false);
+      onToggleEditMode();
+    } else {
+      setPinError(true);
+      setPinInput('');
+    }
+  };
+
   const sidebarContent = (
     <div className="flex flex-col h-full">
       {/* Header */}
@@ -122,16 +154,82 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Edit Mode Toggle */}
       <div className="p-4">
         <button
-          onClick={onToggleEditMode}
-          className={`w-full py-3 text-sm font-medium rounded-md transition-colors ${
+          onClick={handleEditModeClick}
+          className={`w-full py-3 text-sm font-medium rounded-md transition-colors flex items-center justify-center gap-2 ${
             editMode
               ? 'bg-red-500 text-white hover:bg-red-600'
-              : 'bg-black text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200'
+              : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
           }`}
         >
-          {editMode ? 'EXIT EDIT MODE' : 'ENTER EDIT MODE'}
+          {!editMode && <Lock className="w-3.5 h-3.5" />}
+          {editMode ? 'EXIT EDIT MODE' : 'ADMIN'}
         </button>
       </div>
+
+      {/* PIN Prompt */}
+      <AnimatePresence>
+        {pinPromptOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            onClick={() => setPinPromptOpen(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white dark:bg-card rounded-xl shadow-2xl p-6 w-80 mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                  <Lock className="w-4 h-4 text-gray-500" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-sm text-text-primary-light dark:text-text-primary">Admin Access</h3>
+                  <p className="text-xs text-gray-500">Enter PIN to edit content</p>
+                </div>
+              </div>
+              <form onSubmit={handlePinSubmit}>
+                <input
+                  type="password"
+                  value={pinInput}
+                  onChange={(e) => { setPinInput(e.target.value); setPinError(false); }}
+                  placeholder="Enter PIN"
+                  autoFocus
+                  className={`w-full px-3 py-2.5 text-sm rounded-lg border ${
+                    pinError
+                      ? 'border-red-400 bg-red-50 dark:bg-red-900/20'
+                      : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800'
+                  } text-text-primary-light dark:text-text-primary focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white mb-1`}
+                />
+                {pinError && (
+                  <p className="text-xs text-red-500 mb-3">Incorrect PIN. Try again.</p>
+                )}
+                {!pinError && <div className="mb-3" />}
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setPinPromptOpen(false)}
+                    className="flex-1 py-2 text-sm rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 py-2 text-sm rounded-lg bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors font-medium"
+                  >
+                    Unlock
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 

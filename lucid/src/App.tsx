@@ -3,6 +3,7 @@ import { Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLucidStore } from './store/useLucidStore';
 import { IntroScreen } from './components/IntroScreen';
+import { LandingPage } from './components/LandingPage';
 import { Sidebar } from './components/Sidebar';
 import { TierSection } from './components/TierSection';
 import { DataCard } from './components/DataCard';
@@ -27,6 +28,7 @@ const tierIds: TierCategory[] = [
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [showLanding, setShowLanding] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -100,6 +102,10 @@ function App() {
     return <IntroScreen onComplete={() => setShowIntro(false)} />;
   }
 
+  if (showLanding) {
+    return <LandingPage onEnter={() => setShowLanding(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-background">
       <Sidebar
@@ -109,6 +115,7 @@ function App() {
         onTierClick={scrollToTier}
         onFilterChange={setFilter}
         onToggleEditMode={toggleEditMode}
+        onLogoClick={() => setShowLanding(true)}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />

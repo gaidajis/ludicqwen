@@ -10,6 +10,7 @@ interface SidebarProps {
   onTierClick: (tier: TierCategory | null) => void;
   onFilterChange: (type: 'modality' | 'budget', value: string) => void;
   onToggleEditMode: () => void;
+  onLogoClick?: () => void;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -40,6 +41,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onTierClick,
   onFilterChange,
   onToggleEditMode,
+  onLogoClick,
   isOpen,
   onClose,
 }) => {
@@ -74,7 +76,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="p-6 pb-4">
-        <h1 className="font-serif text-xl tracking-wide mb-1">LUCID</h1>
+        <button onClick={onLogoClick} className="text-left">
+          <h1 className="font-serif text-xl tracking-wide mb-1 text-text-primary-light dark:text-text-primary hover:opacity-70 transition-opacity">LUCID</h1>
+        </button>
         <p className="text-xs text-gray-500 dark:text-gray-400">The hierarchy of what matters.</p>
       </div>
 
@@ -236,7 +240,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {sidebarContent}
       </aside>
       <header className="lg:hidden sticky top-0 z-40 bg-white dark:bg-background border-b border-border-light dark:border-border px-4 py-3 flex items-center justify-between">
-        <h1 className="font-serif text-lg tracking-wide">LUCID</h1>
+        <button onClick={onLogoClick} className="text-left">
+          <h1 className="font-serif text-lg tracking-wide text-text-primary-light dark:text-text-primary hover:opacity-70 transition-opacity">LUCID</h1>
+        </button>
         <button
           onClick={onClose}
           className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"

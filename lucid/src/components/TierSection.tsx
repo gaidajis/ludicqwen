@@ -56,7 +56,7 @@ export const TierSection: React.FC<TierSectionProps> = ({ tierId, children }) =>
       <div className="mb-8 pb-4 border-b border-border-light dark:border-border">
         <div className="flex items-baseline gap-4 mb-2">
           <span className="font-mono text-sm text-gray-400">{timeframe}</span>
-          <h2 className="text-2xl font-bold font-serif">
+          <h2 className="text-2xl font-bold font-serif text-text-primary-light dark:text-text-primary">
             <span className="text-gray-400 mr-2">{paddedNum}</span>
             {name}
           </h2>

@@ -125,26 +125,41 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
 
             {/* Score breakdown */}
             <div className="mb-5">
-              <ScoreBar
-                efficacy={item.scores.efficacy}
-                buildQuality={item.scores.buildQuality}
-                consensus={item.scores.consensus}
-                overallScore={item.overallScore}
-              />
+              <ScoreBar item={item} />
             </div>
 
-            {/* Score detail grid */}
+            {/* Score detail grid - show metrics based on modality */}
             <div className="grid grid-cols-3 gap-3 mb-6">
-              {[
-                { label: 'Efficacy', value: item.scores.efficacy },
-                { label: 'Build Quality', value: item.scores.buildQuality },
-                { label: 'Consensus', value: item.scores.consensus },
-              ].map(({ label, value }) => (
-                <div key={label} className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 text-center">
-                  <p className="text-2xl font-mono font-bold text-text-primary-light dark:text-text-primary">{value.toFixed(1)}</p>
-                  <p className="text-xs text-gray-500 mt-1">{label}</p>
-                </div>
-              ))}
+              {(() => {
+                let metrics: Array<{ label: string; value?: number }> = [];
+                
+                if (item.modality === 'product') {
+                  metrics = [
+                    { label: 'Efficacy', value: item.scores.efficacy },
+                    { label: 'Build Quality', value: item.scores.buildQuality },
+                    { label: 'Consensus', value: item.scores.consensus },
+                  ];
+                } else if (item.modality === 'experience') {
+                  metrics = [
+                    { label: 'Impact', value: item.scores.impact },
+                    { label: 'Transformation', value: item.scores.transformation },
+                    { label: 'Uniqueness', value: item.scores.uniqueness },
+                  ];
+                } else if (item.modality === 'location') {
+                  metrics = [
+                    { label: 'Beauty', value: item.scores.beauty },
+                    { label: 'Accessibility', value: item.scores.accessibility },
+                    { label: 'Safety', value: item.scores.safety },
+                  ];
+                }
+                
+                return metrics.map(({ label, value }) => (
+                  <div key={label} className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-mono font-bold text-text-primary-light dark:text-text-primary">{value?.toFixed(1) || 'N/A'}</p>
+                    <p className="text-xs text-gray-500 mt-1">{label}</p>
+                  </div>
+                ));
+              })()}
             </div>
 
             {/* Divider */}

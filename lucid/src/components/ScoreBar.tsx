@@ -1,8 +1,7 @@
+import type { LucidItem } from '../types';
+
 interface ScoreBarProps {
-  efficacy: number;
-  buildQuality: number;
-  consensus: number;
-  overallScore: number;
+  item: LucidItem;
 }
 
 const getScoreColor = (score: number): string => {
@@ -12,33 +11,67 @@ const getScoreColor = (score: number): string => {
   return 'bg-score-red';
 };
 
-export const ScoreBar: React.FC<ScoreBarProps> = ({
-  efficacy,
-  buildQuality,
-  consensus,
-  overallScore,
-}) => {
+const getMetricLabel = (key: string): string => {
+  const labels: Record<string, string> = {
+    efficacy: 'Efficacy',
+    buildQuality: 'Build',
+    consensus: 'Consensus',
+    impact: 'Impact',
+    transformation: 'Transform',
+    uniqueness: 'Unique',
+    beauty: 'Beauty',
+    accessibility: 'Access',
+    safety: 'Safety',
+  };
+  return labels[key] || key;
+};
+
+export const ScoreBar: React.FC<ScoreBarProps> = ({ item }) => {
+  const scores = item.scores;
+  
+  // Determine which metrics to show based on modality
+  let metrics: Array<{ key: string; value?: number }> = [];
+  
+  if (item.modality === 'product') {
+    metrics = [
+      { key: 'efficacy', value: scores.efficacy },
+      { key: 'buildQuality', value: scores.buildQuality },
+      { key: 'consensus', value: scores.consensus },
+    ];
+  } else if (item.modality === 'experience') {
+    metrics = [
+      { key: 'impact', value: scores.impact },
+      { key: 'transformation', value: scores.transformation },
+      { key: 'uniqueness', value: scores.uniqueness },
+    ];
+  } else if (item.modality === 'location') {
+    metrics = [
+      { key: 'beauty', value: scores.beauty },
+      { key: 'accessibility', value: scores.accessibility },
+      { key: 'safety', value: scores.safety },
+    ];
+  }
+  
+  // Filter out undefined values and calculate average for display
+  const validMetrics = metrics.filter(m => m.value !== undefined);
+  const avgScore = validMetrics.length > 0 
+    ? Math.round(validMetrics.reduce((sum, m) => sum + (m.value || 0), 0) / validMetrics.length)
+    : item.overallScore;
+  
   return (
     <div className="flex items-center gap-3">
       <div className="flex-1 flex gap-1 h-2">
-        <div
-          className={`h-full ${getScoreColor(efficacy)}`}
-          style={{ width: `${efficacy / 3}%` }}
-          title={`Efficacy: ${efficacy}`}
-        />
-        <div
-          className={`h-full ${getScoreColor(buildQuality)}`}
-          style={{ width: `${buildQuality / 3}%` }}
-          title={`Build Quality: ${buildQuality}`}
-        />
-        <div
-          className={`h-full ${getScoreColor(consensus)}`}
-          style={{ width: `${consensus / 3}%` }}
-          title={`Consensus: ${consensus}`}
-        />
+        {validMetrics.map((metric) => (
+          <div
+            key={metric.key}
+            className={`h-full ${getScoreColor(metric.value || 0)}`}
+            style={{ width: `${(metric.value || 0) / 3}%` }}
+            title={`${getMetricLabel(metric.key)}: ${metric.value}`}
+          />
+        ))}
       </div>
       <span className="font-mono text-lg font-bold text-text-primary-light dark:text-text-primary">
-        {overallScore}
+        {avgScore}
       </span>
     </div>
   );

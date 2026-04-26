@@ -207,6 +207,24 @@ export const DetailModal: React.FC<DetailModalProps> = ({ item, onClose }) => {
                 </div>
               </div>
             )}
+
+            {/* Affiliate Link Button */}
+            {item.affiliateLink && (
+              <div className="mt-6 pt-5 border-t border-gray-100 dark:border-gray-800">
+                <a
+                  href={item.affiliateLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 bg-black dark:bg-white text-white dark:text-black font-mono text-sm uppercase tracking-wider hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors rounded-lg"
+                >
+                  <span>View Product / Book Now</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <p className="text-xs text-gray-500 mt-2 text-center">
+                  Affiliate link — supports our research
+                </p>
+              </div>
+            )}
           </div>
         </motion.div>
       </motion.div>

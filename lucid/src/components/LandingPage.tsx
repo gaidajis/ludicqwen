@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Shield, Heart, Brain, Users, Mountain, Star, Zap, Globe, Target } from 'lucide-react';
+import { ArrowRight, Shield, Heart, Brain, Users, Mountain, Star, Zap, Globe, Target, Volume2, VolumeX } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 
 interface LandingPageProps {
   onEnter: () => void;
@@ -89,8 +90,48 @@ const tierInfo = [
 ];
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
+  const [isMuted, setIsMuted] = useState(true);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio('/ambient.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.15; // Very subtle volume
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+    
+    if (isMuted) {
+      audioRef.current.play().catch(e => console.log('Audio autoplay blocked:', e));
+      setIsMuted(false);
+    } else {
+      audioRef.current.pause();
+      setIsMuted(true);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white overflow-y-auto">
+    <div className="min-h-screen bg-black text-white overflow-y-auto relative">
+      {/* Audio Toggle Button */}
+      <button
+        onClick={toggleAudio}
+        className="fixed top-6 right-6 z-50 p-3 rounded-full bg-gray-900/50 hover:bg-gray-800/70 border border-gray-700 transition-all"
+        aria-label={isMuted ? 'Enable ambient sound' : 'Disable ambient sound'}
+      >
+        {isMuted ? (
+          <VolumeX className="w-5 h-5 text-gray-400" />
+        ) : (
+          <Volume2 className="w-5 h-5 text-white" />
+        )}
+      </button>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-black" />

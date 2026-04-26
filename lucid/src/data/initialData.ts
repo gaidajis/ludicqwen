@@ -1329,5 +1329,305 @@ export const initialData: LucidItem[] = [
     justification: "Japanese framework intersects passion, mission, vocation, and profession. Week-long intensive produces actionable life direction statement.",
     sourceTypes: ["Purpose Research", "Life Design"],
     context: { budget: "luxury", intent: "purpose" }
+  },
+
+  // TIER 1 - LOCATIONS
+  {
+    id: "loc-1-1",
+    title: "Swiss Alps Survival Retreat",
+    category: "tier-1-alive",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 96, accessibility: 88, safety: 94 },
+    overallScore: 93,
+    justification: "High-altitude training facility with certified mountain guides. Learn avalanche survival, crevasse rescue, and extreme weather shelter building in real alpine conditions.",
+    sourceTypes: ["Mountain Safety", "Survival Training"],
+    context: { budget: "luxury", intent: "survival skills" },
+    affiliateLink: "https://www.swissalps-survival.ch/"
+  },
+  {
+    id: "loc-1-2",
+    title: "Norwegian Fjord Wilderness",
+    category: "tier-1-alive",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 98, accessibility: 82, safety: 91 },
+    overallScore: 90,
+    justification: "Remote fjord access teaches water survival and hypothermia prevention. Guided expeditions include cold-water immersion training and emergency signaling protocols.",
+    sourceTypes: ["Wilderness Medicine", "Nordic Survival"],
+    context: { budget: "luxury", intent: "extreme preparedness" },
+    affiliateLink: "https://www.visitnorway.com/fjord-survival/"
+  },
+
+  // TIER 2 - LOCATIONS
+  {
+    id: "loc-2-1",
+    title: "Costa Rica Rainforest Basecamp",
+    category: "tier-2-stable",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1518182170546-0766aa6f7a56?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 95, accessibility: 90, safety: 89 },
+    overallScore: 91,
+    justification: "Tropical survival school teaching water purification, shelter construction, and edible plant identification. Humidity and biodiversity create realistic long-term survival scenarios.",
+    sourceTypes: ["Jungle Survival", "Ecological Education"],
+    context: { budget: "mid", intent: "tropical preparedness" },
+    affiliateLink: "https://www.costarica-survival.com/"
+  },
+  {
+    id: "loc-2-2",
+    title: "Utah Desert Survival School",
+    category: "tier-2-stable",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 88, accessibility: 92, safety: 93 },
+    overallScore: 91,
+    justification: "Arid environment training for water conservation, solar still construction, and heat management. NOLS-certified instructors teach desert-specific survival protocols.",
+    sourceTypes: ["Desert Survival", "Outdoor Education"],
+    context: { budget: "mid", intent: "arid climate skills" },
+    affiliateLink: "https://www.nols.edu/desert-survival/"
+  },
+
+  // TIER 3 - LOCATIONS
+  {
+    id: "loc-3-1",
+    title: "New Zealand South Island Expedition",
+    category: "tier-3-sustained",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1507699622177-38889105bb03?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 99, accessibility: 85, safety: 92 },
+    overallScore: 92,
+    justification: "Multi-day wilderness trek through diverse ecosystems. Teaches sustained nutrition planning, sleep system optimization, and recovery protocols in variable terrain.",
+    sourceTypes: ["Expedition Planning", "Adventure Travel"],
+    context: { budget: "luxury", intent: "extended wilderness" },
+    affiliateLink: "https://www.newzealand.com/wilderness-expeditions/"
+  },
+  {
+    id: "loc-3-2",
+    title: "Scottish Highlands Bothy Network",
+    category: "tier-3-sustained",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 94, accessibility: 88, safety: 90 },
+    overallScore: 91,
+    justification: "Historic stone shelters provide base for multi-day sustenance training. Learn food preservation, weather reading, and energy conservation in temperate maritime climate.",
+    sourceTypes: ["Mountain Living", "Traditional Skills"],
+    context: { budget: "mid", intent: "sustained outdoor living" },
+    affiliateLink: "https://www.mountainbothies.org.uk/"
+  },
+
+  // TIER 4 - LOCATIONS
+  {
+    id: "loc-4-1",
+    title: "Iceland Geothermal Homestead",
+    category: "tier-4-secure",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 97, accessibility: 86, safety: 95 },
+    overallScore: 93,
+    justification: "Off-grid facility powered entirely by geothermal energy. Study renewable infrastructure, natural building techniques, and self-sufficient community design in extreme latitude.",
+    sourceTypes: ["Sustainable Architecture", "Renewable Energy"],
+    context: { budget: "luxury", intent: "energy independence" },
+    affiliateLink: "https://www.iceland-geothermal.is/"
+  },
+  {
+    id: "loc-4-2",
+    title: "Japanese Earthquake-Ready Village",
+    category: "tier-4-secure",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 85, accessibility: 94, safety: 98 },
+    overallScore: 92,
+    justification: "Model community showcasing seismic-resistant construction and disaster preparedness systems. Tour earthquake simulation facilities and emergency response infrastructure.",
+    sourceTypes: ["Disaster Preparedness", "Urban Planning"],
+    context: { budget: "mid", intent: "structural safety" },
+    affiliateLink: "https://www.bousai.go.jp/en/"
+  },
+
+  // TIER 5 - LOCATIONS
+  {
+    id: "loc-5-1",
+    title: "Bali Wellness Sanctuary",
+    category: "tier-5-pleasure",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1537905569824-f8ca3c0f547f?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 96, accessibility: 91, safety: 93 },
+    overallScore: 93,
+    justification: "Integrated wellness resort combining traditional Balinese healing with modern recovery science. Daily massage, thermal baths, and sensory deprivation optimize pleasure protocols.",
+    sourceTypes: ["Wellness Tourism", "Spa Therapy"],
+    context: { budget: "luxury", intent: "sensory restoration" },
+    affiliateLink: "https://www.baliwellness.com/"
+  },
+  {
+    id: "loc-5-2",
+    title: "French Riviera Luxury Spa",
+    category: "tier-5-pleasure",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 94, accessibility: 89, safety: 95 },
+    overallScore: 93,
+    justification: "Michelin-starred spa cuisine combined with thalassotherapy treatments. Mediterranean climate and coastal views enhance therapeutic outcomes for stress reduction.",
+    sourceTypes: ["Luxury Wellness", "Thalassotherapy"],
+    context: { budget: "luxury", intent: "deliberate pleasure" },
+    affiliateLink: "https://www.frenchriviera-spa.com/"
+  },
+
+  // TIER 6 - LOCATIONS
+  {
+    id: "loc-6-1",
+    title: "Danish Co-Housing Community",
+    category: "tier-6-social",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 87, accessibility: 92, safety: 94 },
+    overallScore: 91,
+    justification: "Intentional community model balancing privacy with shared spaces. Regular communal meals and collaborative decision-making foster deep social bonds and emotional safety.",
+    sourceTypes: ["Community Design", "Social Architecture"],
+    context: { budget: "mid", intent: "belonging" },
+    affiliateLink: "https://www.dk-cohousing.org/"
+  },
+  {
+    id: "loc-6-2",
+    title: "Bhutanese Village Stay",
+    category: "tier-6-social",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1544367563-12123d8965cd?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 95, accessibility: 78, safety: 91 },
+    overallScore: 88,
+    justification: "Immersive homestay in Gross National Happiness birthplace. Community-centered lifestyle and Buddhist philosophy create profound relational learning opportunities.",
+    sourceTypes: ["Cultural Immersion", "Happiness Studies"],
+    context: { budget: "luxury", intent: "community connection" },
+    affiliateLink: "https://www.tourism.gov.bt/"
+  },
+
+  // TIER 7 - LOCATIONS
+  {
+    id: "loc-7-1",
+    title: "Singapore Business Hub Residency",
+    category: "tier-7-agency",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1565514020176-db7643f8e063?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 82, accessibility: 96, safety: 97 },
+    overallScore: 92,
+    justification: "Global financial center with entrepreneur visa programs. Access to venture capital networks, regulatory sandboxes, and world-class business infrastructure accelerates agency development.",
+    sourceTypes: ["Business Immigration", "Startup Ecosystems"],
+    context: { budget: "luxury", intent: "economic sovereignty" },
+    affiliateLink: "https://www.enterprisesg.gov.sg/"
+  },
+  {
+    id: "loc-7-2",
+    title: "Estonia e-Residency Base",
+    category: "tier-7-agency",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 79, accessibility: 94, safety: 95 },
+    overallScore: 89,
+    justification: "Digital nation platform enabling location-independent business ownership. Blockchain-secured identity and streamlined bureaucracy maximize decision-making autonomy.",
+    sourceTypes: ["Digital Governance", "Remote Business"],
+    context: { budget: "mid", intent: "digital freedom" },
+    affiliateLink: "https://www.e-resident.gov.ee/"
+  },
+
+  // TIER 8 - LOCATIONS
+  {
+    id: "loc-8-1",
+    title: "Oxford Continuing Education College",
+    category: "tier-8-mind",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 93, accessibility: 88, safety: 96 },
+    overallScore: 92,
+    justification: "Week-long intensive courses taught by Oxford faculty across humanities and sciences. Tutorial-style discussions and Bodleian Library access create unparalleled cognitive expansion.",
+    sourceTypes: ["Higher Education", "Liberal Arts"],
+    context: { budget: "luxury", intent: "intellectual growth" },
+    affiliateLink: "https://www.contued.ox.ac.uk/"
+  },
+  {
+    id: "loc-8-2",
+    title: "Santa Fe Institute Complex Systems",
+    category: "tier-8-mind",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 85, accessibility: 84, safety: 94 },
+    overallScore: 88,
+    justification: "Research center dedicated to complexity science. Public lectures and workshops expose participants to cutting-edge interdisciplinary thinking on emergence and adaptation.",
+    sourceTypes: ["Complexity Science", "Interdisciplinary Research"],
+    context: { budget: "mid", intent: "paradigm expansion" },
+    affiliateLink: "https://www.santafe.edu/"
+  },
+
+  // TIER 9 - LOCATIONS
+  {
+    id: "loc-9-1",
+    title: "Antarctic Peninsula Expedition",
+    category: "tier-9-senses",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1517176118179-652467e1e1d6?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 100, accessibility: 65, safety: 92 },
+    overallScore: 86,
+    justification: "Last pristine wilderness on Earth. Penguin colonies, glacier calving, and absolute silence create transcendent sensory experience unavailable anywhere else on planet.",
+    sourceTypes: ["Polar Exploration", "Ecotourism"],
+    context: { budget: "luxury", intent: "ultimate awe" },
+    affiliateLink: "https://www.iaato.org/"
+  },
+  {
+    id: "loc-9-2",
+    title: "Iceland Aurora Observatory",
+    category: "tier-9-senses",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 98, accessibility: 87, safety: 94 },
+    overallScore: 93,
+    justification: "Dark sky preserve with aurora visibility 200+ nights annually. Glass-roof accommodations enable celestial viewing from warmth while geothermal spas complement cosmic spectacle.",
+    sourceTypes: ["Astrophysics", "Northern Lights Tourism"],
+    context: { budget: "luxury", intent: "cosmic wonder" },
+    affiliateLink: "https://www.auroraobservatory.is/"
+  },
+
+  // TIER 10 - LOCATIONS
+  {
+    id: "loc-10-1",
+    title: "Indian Ashram Long-Term Retreat",
+    category: "tier-10-meaning",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
+    rank: 1,
+    scores: { beauty: 91, accessibility: 82, safety: 89 },
+    overallScore: 87,
+    justification: "Month-plus residential programs in ancient wisdom traditions. Daily meditation, seva (selfless service), and satsang (truth gathering) facilitate profound purpose discovery.",
+    sourceTypes: ["Spiritual Practice", "Contemplative Traditions"],
+    context: { budget: "budget", intent: "self-realization" },
+    affiliateLink: "https://www.ashramnetwork.org/"
+  },
+  {
+    id: "loc-10-2",
+    title: "Kyoto Zen Temple Stay",
+    category: "tier-10-meaning",
+    modality: "location",
+    imageUrl: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
+    rank: 2,
+    scores: { beauty: 96, accessibility: 89, safety: 95 },
+    overallScore: 93,
+    justification: "Shukubo temple lodging with monk-guided zazen meditation. Centuries-old rituals and minimalist aesthetics create container for examining life direction and legacy intentions.",
+    sourceTypes: ["Zen Buddhism", "Temple Tourism"],
+    context: { budget: "mid", intent: "purpose clarity" },
+    affiliateLink: "https://www.kyoto-shukubo.com/"
   }
 ];

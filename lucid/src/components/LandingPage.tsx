@@ -124,16 +124,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
             Every product, experience, and location rigorously scored for maximum impact.
           </motion.p>
 
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.5 }}
-            onClick={onEnter}
-            className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-mono text-sm uppercase tracking-wider hover:bg-gray-200 transition-colors"
+            className="text-gray-500 text-sm font-mono"
           >
-            Explore The Hierarchy
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            Scroll down to explore the hierarchy
+          </motion.div>
         </motion.div>
       </section>
 

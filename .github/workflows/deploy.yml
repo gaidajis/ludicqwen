@@ -33,6 +33,8 @@ jobs:
       - name: Build
         working-directory: lucid
         run: npm run build
+        env:
+          VITE_ADMIN_PIN: ${{ secrets.VITE_ADMIN_PIN }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

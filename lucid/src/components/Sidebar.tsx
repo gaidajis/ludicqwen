@@ -30,8 +30,8 @@ const tiers: { id: TierCategory; label: string }[] = [
 const modalityOptions = ['all', 'product', 'experience', 'location'];
 const budgetOptions = ['all', 'budget', 'mid', 'luxury'];
 
-// PIN is checked client-side — keeps casual visitors out without a server
-const ADMIN_PIN = 'lucid2025';
+// PIN loaded from environment variable at build time — never hardcoded in source
+const ADMIN_PIN = import.meta.env.VITE_ADMIN_PIN as string;
 
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTier,
@@ -49,7 +49,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const handleEditModeClick = () => {
     if (editMode) {
-      // Exiting edit mode — no PIN needed
       onToggleEditMode();
     } else {
       setPinPromptOpen(true);
@@ -60,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const handlePinSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pinInput === ADMIN_PIN) {
+    if (ADMIN_PIN && pinInput === ADMIN_PIN) {
       setPinPromptOpen(false);
       setPinInput('');
       setPinError(false);
@@ -108,7 +107,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Filters */}
       <div className="p-4 space-y-4">
-        {/* Modality Filter */}
         <div>
           <p className="text-xs font-mono uppercase text-gray-500 mb-2">Modality</p>
           <div className="flex flex-wrap gap-2">
@@ -127,8 +125,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             ))}
           </div>
         </div>
-
-        {/* Budget Filter */}
         <div>
           <p className="text-xs font-mono uppercase text-gray-500 mb-2">Budget</p>
           <div className="flex flex-wrap gap-2">
@@ -235,12 +231,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <>
-      {/* Desktop Sidebar */}
       <aside className="hidden lg:block w-[280px] h-screen fixed left-0 top-0 bg-white dark:bg-background border-r border-border-light dark:border-border overflow-hidden">
         {sidebarContent}
       </aside>
-
-      {/* Mobile Header */}
       <header className="lg:hidden sticky top-0 z-40 bg-white dark:bg-background border-b border-border-light dark:border-border px-4 py-3 flex items-center justify-between">
         <h1 className="font-serif text-lg tracking-wide">LUCID</h1>
         <button
@@ -251,8 +244,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <Menu className="w-6 h-6" />
         </button>
       </header>
-
-      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <>

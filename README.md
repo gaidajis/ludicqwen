@@ -4,7 +4,10 @@
 
 **LUCID** is a tiered catalogue of curated items — products, experiences, and locations — ranked by a structured scoring system across 10 hierarchy levels of human need, from immediate survival to long-term meaning.
 
-🌐 **Live site:** [gaidajis.github.io/ludicqwen](https://gaidajis.github.io/ludicqwen/)
+[![Deploy to GitHub Pages](https://github.com/gaidajis/Lucid/actions/workflows/deploy.yml/badge.svg)](https://github.com/gaidajis/Lucid/actions/workflows/deploy.yml)
+[![License: BUSL-1.1](https://img.shields.io/badge/License-BUSL--1.1-blue.svg)](LICENSE)
+
+🌐 **Live site:** [gaidajis.github.io/Lucid](https://gaidajis.github.io/Lucid/)
 
 ---
 
@@ -83,8 +86,8 @@ Activated via the **ENTER EDIT MODE** button in the sidebar. When active:
 
 ```bash
 # Clone the repo
-git clone https://github.com/gaidajis/ludicqwen.git
-cd ludicqwen/lucid
+git clone https://github.com/gaidajis/Lucid.git
+cd Lucid/lucid
 
 # Install dependencies
 npm install
@@ -106,19 +109,19 @@ npm run preview
 
 ## Deployment
 
-The site is automatically deployed to **GitHub Pages** on every push to `main` via the GitHub Actions workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+The site deploys automatically to **GitHub Pages** on every push to `main` via [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 
 The workflow:
-1. Installs Node 20 and runs `npm ci` in `lucid/`
+1. Installs Node 20 and runs `npm install` in `lucid/`
 2. Builds the app with `npm run build`
-3. Publishes `lucid/dist/` to the `gh-pages` branch
+3. Publishes `lucid/dist/` to GitHub Pages
 
 ---
 
 ## Project Structure
 
 ```
-ludicqwen/
+Lucid/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions CI/CD
@@ -144,3 +147,19 @@ ludicqwen/
         ├── App.tsx
         └── main.tsx
 ```
+
+---
+
+## License
+
+This project is licensed under the **Business Source License 1.1 (BUSL-1.1)**.
+
+- ✅ Personal and educational use is permitted
+- ❌ Commercial use is exclusively reserved for the Licensor (Kyparissis Gkaintatzis)
+- 📅 Change Date: **January 1, 2029** — at which point the license converts to **MIT**
+
+See [LICENSE](LICENSE) for full terms.
+
+---
+
+© 2026 Kyparissis Gkaintatzis

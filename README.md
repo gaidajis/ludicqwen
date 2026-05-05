@@ -7,7 +7,7 @@
 [![Deploy to GitHub Pages](https://github.com/gaidajis/Lucid/actions/workflows/deploy.yml/badge.svg)](https://github.com/gaidajis/Lucid/actions/workflows/deploy.yml)
 [![License: BUSL-1.1](https://img.shields.io/badge/License-BUSL--1.1-blue.svg)](LICENSE)
 
-🌐 **Live site:** [gaidajis.github.io/Lucid](https://gaidajis.github.io/Lucid/)
+🌐 **Live site:** [gaidajis.github.io/Lucid](https://gaidajis.github.io/lucid/)
 
 ---
 

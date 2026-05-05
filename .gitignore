@@ -1,4 +1,14 @@
-```
 # Build artifacts
 lucid/dist/
-```
+
+# Dependencies
+lucid/node_modules/
+node_modules/
+
+# Environment variables
+.env
+lucid/.env
+
+# OS artifacts
+.DS_Store
+Thumbs.db
